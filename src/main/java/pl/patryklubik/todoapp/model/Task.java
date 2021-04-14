@@ -1,7 +1,7 @@
 package pl.patryklubik.todoapp.model;
 
 import javax.persistence.*;
-//import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 
 /**
@@ -16,7 +16,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 //    @Column(name = "desc")
-//    @NotBlank(message = "Tasks description must not be null")
+    @NotBlank(message = "Tasks description must not be null")
     private String description;
     private boolean done;
 
