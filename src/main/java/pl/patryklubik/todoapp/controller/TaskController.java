@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import pl.patryklubik.todoapp.model.Task;
 import pl.patryklubik.todoapp.model.TaskRepository;
@@ -53,6 +54,20 @@ public class TaskController {
         return ResponseEntity.created(URI.create("/" + result.getId())).body(result);
     }
 
+
+    @Transactional
+    @PatchMapping("/tasks/{id}")
+    public ResponseEntity<?> toggleTask(@PathVariable int id) {
+        if(!repository.existsById(id)) {
+            return ResponseEntity.notFound().build();
+        }
+        repository.findById(id)
+                .ifPresent(task -> task.setDone(!task.isDone()));
+//        throw new RuntimeException();
+//        - wystąpienie wyjątku w tym miejscu poskutkuje zmianą
+//        w obiekcie repository bez zmiany w bazie danych
+        return ResponseEntity.noContent().build();
+    }
 
 
     @PutMapping("/tasks/{id}")

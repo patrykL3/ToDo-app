@@ -2,6 +2,7 @@ package pl.patryklubik.todoapp.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
 
 /**
@@ -19,6 +20,7 @@ public class Task {
     @NotBlank(message = "Tasks description must not be null")
     private String description;
     private boolean done;
+    private LocalDateTime deadline;
 
     public Task() {
     }
@@ -35,7 +37,7 @@ public class Task {
         return description;
     }
 
-    void setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -43,7 +45,15 @@ public class Task {
         return done;
     }
 
-    void setDone(boolean done) {
+    public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public LocalDateTime getDeadline() {
+        return deadline;
+    }
+
+    void setDeadline(LocalDateTime deadline) {
+        this.deadline = deadline;
     }
 }
