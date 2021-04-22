@@ -69,6 +69,12 @@ public class TaskController {
         return ResponseEntity.noContent().build();
     }
 
+//    @Transactional            // Klasa korzystająca z klasy TaskController wywołuje metody za pośrednictwem PROXY
+//    public void foobar() {    // W związku z tym odwołanie do metody toggleTask w tym przykładzie bez zastosowania
+//        this.toggleTask(1);   // @Transactional spowoduje, że dane w bazie danych nie zostaną zmienione, prowadzi
+//    }                         // to do niespójności danych w "repository" i bazie danych
+
+
 
     @PutMapping("/tasks/{id}")
     ResponseEntity<?> updateTask(@PathVariable int id, @RequestBody @Valid Task toUpdate) {

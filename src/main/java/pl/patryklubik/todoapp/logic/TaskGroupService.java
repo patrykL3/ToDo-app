@@ -20,9 +20,9 @@ import java.util.stream.Collectors;
 /**
  * Create by Patryk Łubik on 20.04.2021.
  */
-@Service // domyślnie wstrzykiwane beany są obiektami singleton
-@RequestScope // w obrębie 1 żądania dostajemy unikalny obiekt serwisu
-//@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+//@Service // domyślnie wstrzykiwane beany są obiektami singleton
+//@RequestScope // w obrębie 1 żądania dostajemy unikalny obiekt serwisu
+////@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TaskGroupService {
 
     private TaskGroupRepository repository;

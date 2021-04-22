@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
  * Create by Patryk Łubik on 21.04.2021.
  */
 
-@Service
+//@Service
 public class ProjectService {
     private ProjectRepository repository;
     private TaskGroupRepository taskGroupRepository;
