@@ -8,3 +8,8 @@ spring:
     url: 'jdbc:h2:C:/Users/Public/todoDb'
     username: 'sa'
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

@@ -6,10 +6,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import org.springframework.web.context.annotation.RequestScope;
-import pl.patryklubik.todoapp.model.Task;
-import pl.patryklubik.todoapp.model.TaskGroup;
-import pl.patryklubik.todoapp.model.TaskGroupRepository;
-import pl.patryklubik.todoapp.model.TaskRepository;
+import pl.patryklubik.todoapp.model.*;
 import pl.patryklubik.todoapp.model.projection.GroupReadModel;
 import pl.patryklubik.todoapp.model.projection.GroupWriteModel;
 
@@ -34,7 +31,11 @@ public class TaskGroupService {
     }
 
     public GroupReadModel createGroup(final GroupWriteModel source) {
-        TaskGroup result = repository.save(source.toGroup());
+        return createGroup(source, null);
+    }
+
+    GroupReadModel createGroup(final GroupWriteModel source, final Project project) {
+        TaskGroup result = repository.save(source.toGroup(project));
         return new GroupReadModel(result);
     }
 
@@ -54,4 +55,6 @@ public class TaskGroupService {
         result.setDone(!result.isDone());
         repository.save(result);
     }
+
+
 }

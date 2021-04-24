@@ -58,7 +58,7 @@ public class TaskGroup {
         return done;
     }
 
-    public void setDone(boolean done) {
+    public void setDone(final boolean done) {
         this.done = done;
     }
 
@@ -75,7 +75,7 @@ public class TaskGroup {
         return project;
     }
 
-    public void setProject(Project project) {
+    public void setProject(final Project project) {
         this.project = project;
     }
 }
